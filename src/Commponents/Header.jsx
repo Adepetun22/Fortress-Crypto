@@ -123,27 +123,29 @@ const Header = ({ onSearch, onRefresh, isLoading, lastUpdated, darkMode, onToggl
         </div>
 
         {/* Refresh Button */}
-        <button
-          onClick={handleRefresh}
-          disabled={isLoading}
-          className="btn-secondary"
-          aria-label="Refresh data"
-        >
-          <svg
-            className={`w-5 h-5 text-gray-600 dark:text-gray-300 ${isLoading ? 'animate-spin' : ''}`}
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
+        <div className="hidden">
+          <button
+            onClick={handleRefresh}
+            disabled={isLoading}
+            className="btn-secondary"
+            aria-label="Refresh data"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-            />
-          </svg>
-        </button>
+            <svg
+              className={`w-5 h-5 text-gray-600 dark:text-gray-300 ${isLoading ? 'animate-spin' : ''}`}
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+              />
+            </svg>
+          </button>
+        </div>
 
         {/* Dark Mode Toggle */}
         <button
@@ -269,27 +271,29 @@ const Header = ({ onSearch, onRefresh, isLoading, lastUpdated, darkMode, onToggl
         </div>
 
         {/* Refresh Button */}
-        <button
-          onClick={handleRefresh}
-          disabled={isLoading}
-          className="btn-secondary"
-          aria-label="Refresh data"
-        >
-          <svg
-            className={`w-5 h-5 text-gray-600 dark:text-gray-300 ${isLoading ? 'animate-spin' : ''}`}
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
+        <div className="hidden">
+          <button
+            onClick={handleRefresh}
+            disabled={isLoading}
+            className="btn-secondary"
+            aria-label="Refresh data"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-            />
-          </svg>
-        </button>
+            <svg
+              className={`w-5 h-5 text-gray-600 dark:text-gray-300 ${isLoading ? 'animate-spin' : ''}`}
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+              />
+            </svg>
+          </button>
+        </div>
 
         {/* Dark Mode Toggle */}
         <button
