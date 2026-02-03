@@ -1,0 +1,256 @@
+
+import fortressCryptoLogo0 from '../assets/fortress-crypto-logo0.png';
+import icon0 from '../assets/icon0.svg';
+import icon1 from '../assets/icon1.svg';
+import icon2 from '../assets/icon2.svg';
+import bitcoin0 from '../assets/bitcoin0.png';
+import icon3 from '../assets/icon3.svg';
+import ethereum0 from '../assets/ethereum0.png';
+import icon4 from '../assets/icon4.svg';
+import solana0 from '../assets/solana0.png';
+import icon5 from '../assets/icon5.svg';
+import cardano0 from '../assets/cardano0.png';
+import icon6 from '../assets/icon6.svg';
+import ripple0 from '../assets/ripple0.png';
+import icon7 from '../assets/icon7.svg';
+import avalanche0 from '../assets/avalanche0.png';
+import icon8 from '../assets/icon8.svg';
+import polkadot0 from '../assets/polkadot0.png';
+import icon9 from '../assets/icon9.svg';
+import chainlink0 from '../assets/chainlink0.png';
+import icon10 from '../assets/icon10.svg';
+import polygon0 from '../assets/polygon0.png';
+import icon11 from '../assets/icon11.svg';
+import litecoin0 from '../assets/litecoin0.png';
+import icon12 from '../assets/icon12.svg';
+import fortressCryptoLogo1 from '../assets/fortress-crypto-logo1.png';
+
+// Cryptocurrency data
+const cryptoData = [
+  { rank: 1, name: 'Bitcoin', symbol: 'BTC', price: 94567.32, change: 2.45, marketCap: 1.88, image: bitcoin0, icon: icon3, isPositive: true },
+  { rank: 2, name: 'Ethereum', symbol: 'ETH', price: 3456.78, change: -1.23, marketCap: 415.68, image: ethereum0, icon: icon4, isPositive: false },
+  { rank: 3, name: 'Solana', symbol: 'SOL', price: 178.45, change: 8.92, marketCap: 78.90, image: solana0, icon: icon5, isPositive: true },
+  { rank: 4, name: 'Cardano', symbol: 'ADA', price: 1.08, change: 5.67, marketCap: 37.89, image: cardano0, icon: icon6, isPositive: true },
+  { rank: 5, name: 'Ripple', symbol: 'XRP', price: 0.62, change: -2.34, marketCap: 34.57, image: ripple0, icon: icon7, isPositive: false },
+  { rank: 6, name: 'Avalanche', symbol: 'AVAX', price: 42.34, change: 6.78, marketCap: 15.68, image: avalanche0, icon: icon8, isPositive: true },
+  { rank: 7, name: 'Polkadot', symbol: 'DOT', price: 7.89, change: 3.45, marketCap: 10.23, image: polkadot0, icon: icon9, isPositive: true },
+  { rank: 8, name: 'Chainlink', symbol: 'LINK', price: 15.67, change: 1.89, marketCap: 9.23, image: chainlink0, icon: icon10, isPositive: true },
+  { rank: 9, name: 'Polygon', symbol: 'MATIC', price: 0.89, change: 4.23, marketCap: 8.23, image: polygon0, icon: icon11, isPositive: true },
+  { rank: 10, name: 'Litecoin', symbol: 'LTC', price: 98.45, change: -0.87, marketCap: 7.35, image: litecoin0, icon: icon12, isPositive: false },
+];
+
+const formatPrice = (price) => {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  }).format(price);
+};
+
+const formatMarketCap = (value) => {
+  if (value >= 1000) {
+    return `$${(value / 1000).toFixed(2)}T`;
+  }
+  return `$${value.toFixed(2)}B`;
+};
+
+const CryptoRow = ({ crypto }) => {
+  return (
+    <div className="grid grid-cols-[60px_1fr_140px_120px_140px_140px] items-center gap-4 px-5 py-4 border-b border-gray-100 hover:bg-gray-50 transition-colors">
+      {/* Rank */}
+      <div className="text-gray-500 font-medium">{crypto.rank}</div>
+      
+      {/* Asset */}
+      <div className="flex items-center gap-3">
+        <img src={crypto.image} alt={crypto.name} className="w-10 h-10 rounded-full object-cover" />
+        <div>
+          <div className="font-semibold text-gray-900">{crypto.name}</div>
+          <div className="text-sm text-gray-500">{crypto.symbol}</div>
+        </div>
+      </div>
+      
+      {/* Price */}
+      <div className="text-right">
+        <span className="font-mono font-semibold text-gray-900">{formatPrice(crypto.price)}</span>
+      </div>
+      
+      {/* 24h Change */}
+      <div className="text-right">
+        <span className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-sm font-semibold ${
+          crypto.isPositive 
+            ? 'bg-green-100 text-green-600' 
+            : 'bg-red-100 text-red-600'
+        }`}>
+          <img 
+            src={crypto.icon} 
+            alt={crypto.isPositive ? 'up' : 'down'} 
+            className={`w-3 h-3 ${!crypto.isPositive ? 'rotate-180' : ''}`}
+          />
+          {Math.abs(crypto.change)}%
+        </span>
+      </div>
+      
+      {/* Market Cap */}
+      <div className="text-right">
+        <span className="font-mono text-gray-900">{formatMarketCap(crypto.marketCap)}</span>
+      </div>
+      
+      {/* Actions */}
+      <div className="text-right">
+        <button className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-semibold transition-colors">
+          View Details
+        </button>
+      </div>
+    </div>
+  );
+};
+
+const Home = () => {
+  return (
+    <div className="min-h-screen bg-white">
+      {/* Header */}
+      <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            {/* Logo */}
+            <div className="flex items-center gap-3">
+              <img src={fortressCryptoLogo0} alt="Fortress Crypto Logo" className="w-10 h-10" />
+              <span className="text-xl font-bold text-gray-900">Fortress Crypto</span>
+            </div>
+            
+            {/* Navigation */}
+            <nav className="hidden md:flex items-center gap-8">
+              <a href="#" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">Markets</a>
+              <a href="#" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">Portfolio</a>
+              <a href="#" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">News</a>
+            </nav>
+            
+            {/* Actions */}
+            <div className="flex items-center gap-4">
+              <button className="w-10 h-10 rounded-lg bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors">
+                <img src={icon0} alt="Search" className="w-5 h-5" />
+              </button>
+              <button className="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors">
+                Get Started
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      {/* Main Content */}
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Page Title */}
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">Cryptocurrency Markets</h1>
+          <p className="text-gray-600">Track real-time prices and market data</p>
+        </div>
+        
+        {/* Search Bar */}
+        <div className="relative mb-8">
+          <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+            <img src={icon1} alt="Search" className="w-5 h-5 text-gray-400" />
+          </div>
+          <input
+            type="text"
+            placeholder="Search cryptocurrencies..."
+            className="w-full pl-12 pr-4 py-3.5 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow"
+          />
+        </div>
+        
+        {/* Crypto Table */}
+        <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm">
+          {/* Table Header */}
+          <div className="grid grid-cols-[60px_1fr_140px_120px_140px_140px] gap-4 px-5 py-4 bg-gray-50 border-b border-gray-200">
+            <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider">#</div>
+            <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Asset</div>
+            <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider text-right">Price</div>
+            <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider text-right">24h Change</div>
+            <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider text-right flex items-center justify-end gap-1">
+              Market Cap
+              <img src={icon2} alt="Info" className="w-4 h-4" />
+            </div>
+            <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider text-right">Actions</div>
+          </div>
+          
+          {/* Table Body */}
+          <div>
+            {cryptoData.map((crypto) => (
+              <CryptoRow key={crypto.rank} crypto={crypto} />
+            ))}
+          </div>
+        </div>
+      </main>
+
+      {/* Footer */}
+      <footer className="bg-gradient-to-br from-blue-600 to-blue-800 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+            {/* Brand */}
+            <div>
+              <div className="flex items-center gap-3 mb-4">
+                <img src={fortressCryptoLogo1} alt="Fortress Crypto Logo" className="w-10 h-10" />
+                <span className="text-xl font-bold">Fortress Crypto</span>
+              </div>
+              <p className="text-gray-300 text-sm leading-relaxed">
+                Your trusted platform for tracking cryptocurrency markets and making informed investment decisions.
+              </p>
+            </div>
+            
+            {/* Markets */}
+            <div>
+              <h3 className="text-sm font-semibold uppercase tracking-wider mb-4">Markets</h3>
+              <ul className="space-y-3 text-sm text-gray-300">
+                <li><a href="#" className="hover:text-white transition-colors">Cryptocurrencies</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Exchanges</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">DeFi</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">NFTs</a></li>
+              </ul>
+            </div>
+            
+            {/* Resources */}
+            <div>
+              <h3 className="text-sm font-semibold uppercase tracking-wider mb-4">Resources</h3>
+              <ul className="space-y-3 text-sm text-gray-300">
+                <li><a href="#" className="hover:text-white transition-colors">API Documentation</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Learning Center</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Market Analysis</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Support</a></li>
+              </ul>
+            </div>
+            
+            {/* Newsletter */}
+            <div>
+              <h3 className="text-sm font-semibold uppercase tracking-wider mb-4">Newsletter</h3>
+              <p className="text-sm text-gray-300 mb-4">Stay updated with the latest crypto news and market insights.</p>
+              <div className="flex gap-2">
+                <input
+                  type="email"
+                  placeholder="Your email"
+                  className="flex-1 px-4 py-2.5 bg-white/10 border border-white/20 rounded-lg text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/30"
+                />
+                <button className="px-5 py-2.5 bg-white text-blue-600 rounded-lg font-semibold text-sm hover:bg-gray-100 transition-colors">
+                  Subscribe
+                </button>
+              </div>
+            </div>
+          </div>
+          
+          {/* Bottom Bar */}
+          <div className="pt-8 border-t border-white/20 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p className="text-sm text-gray-300">© 2025 Fortress Crypto. All rights reserved.</p>
+            <div className="flex items-center gap-6 text-sm text-gray-300">
+              <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+              <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+              <span className="text-gray-400">Powered by Readdy</span>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default Home;
+
