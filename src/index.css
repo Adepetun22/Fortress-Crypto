@@ -1,3 +1,75 @@
+/* ==========================================
+   FORTESS CRYPTO - DESIGN SYSTEM
+   Base Styles & Font Import
+   ========================================== */
+
+/* Import Inter font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ==========================================
+   BASE STYLES
+   ========================================== */
+
+@layer base {
+  /* Set default font family */
+  body {
+    @apply font-sans antialiased;
+  }
+  
+  /* Ensure proper font rendering */
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Focus styles for accessibility */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-primary-blue ring-offset-2;
+  }
+}
+
+/* ==========================================
+   COMPONENT CLASSES
+   ========================================== */
+
+@layer components {
+  /* Primary Button */
+  .btn-primary {
+    @apply bg-primary-blue text-white px-4 py-2 rounded-md transition-all duration-200 hover:bg-primary-dark hover:shadow-md active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  
+  /* Secondary Button (Refresh Icon Button) */
+  .btn-secondary {
+    @apply w-10 h-10 rounded-full flex items-center justify-center transition-transform duration-300 hover:rotate-180 bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600;
+  }
+  
+  /* List Item */
+  .list-item {
+    @apply transition-all duration-200 ease-in-out cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800;
+  }
+}
+
+/* ==========================================
+   UTILITY CLASSES
+   ========================================== */
+
+@layer utilities {
+  /* Monospace for numbers */
+  .font-mono-numbers {
+    font-variant-numeric: tabular-nums;
+  }
+  
+  /* Hide scrollbar but keep functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
