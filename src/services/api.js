@@ -82,6 +82,10 @@ export const searchCryptos = async (query) => {
  * @returns {string} Formatted price string
  */
 export const formatPrice = (price) => {
+  if (price === null || price === undefined || isNaN(price)) {
+    price = 0;
+  }
+  
   if (price >= 1) {
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
@@ -90,12 +94,14 @@ export const formatPrice = (price) => {
       maximumFractionDigits: 2,
     }).format(price);
   } else {
-    return new Intl.NumberFormat('en-US', {
+    // For small prices, always show up to 6 decimal places
+    const formatted = new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'USD',
-      minimumFractionDigits: 2,
+      minimumFractionDigits: 6,
       maximumFractionDigits: 6,
     }).format(price);
+    return formatted;
   }
 };
 
