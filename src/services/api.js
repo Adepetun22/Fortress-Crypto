@@ -4,7 +4,6 @@
  */
 
 const API_BASE_URL = 'https://api.coingecko.com/api/v3';
-const API_KEY = 'CG-tBJB6QPF1RS58iTahAuQT2CT';
 
 /**
  * Fetch top cryptocurrencies by market cap
@@ -15,7 +14,7 @@ const API_KEY = 'CG-tBJB6QPF1RS58iTahAuQT2CT';
 export const fetchTopCryptos = async (page = 1, perPage = 20) => {
   try {
     const response = await fetch(
-      `${API_BASE_URL}/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=${perPage}&page=${page}&sparkline=false&api_key=${API_KEY}`
+      `${API_BASE_URL}/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=${perPage}&page=${page}&sparkline=false`
     );
 
     if (!response.ok) {
@@ -38,7 +37,7 @@ export const fetchTopCryptos = async (page = 1, perPage = 20) => {
 export const fetchCryptoDetails = async (coinId) => {
   try {
     const response = await fetch(
-      `${API_BASE_URL}/coins/${coinId}?localization=false&tickers=false&community_data=false&developer_data=false&sparkline=false&api_key=${API_KEY}`
+      `${API_BASE_URL}/coins/${coinId}?localization=false&tickers=false&community_data=false&developer_data=false&sparkline=false`
     );
 
     if (!response.ok) {
@@ -61,7 +60,7 @@ export const fetchCryptoDetails = async (coinId) => {
 export const searchCryptos = async (query) => {
   try {
     const response = await fetch(
-      `${API_BASE_URL}/search?query=${encodeURIComponent(query)}&api_key=${API_KEY}`
+      `${API_BASE_URL}/search?query=${encodeURIComponent(query)}`
     );
 
     if (!response.ok) {
